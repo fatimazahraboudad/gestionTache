@@ -1,0 +1,20 @@
+<div *ngFor="let task of listTache"> 
+    <ul>
+    <li>{{task.id}}</li>
+    <li>{{task.description | uppercase}}</li>
+    <li>{{task.date | date}}</li>
+    <li>
+    <div *ngIf="task.completed; else elseBlock">completed</div>
+    <ng-template #elseBlock>
+        <button (click)="Onclick(task.id)" class="btn btn-outline-success">
+            <i>Terminer</i>
+        </button>
+    </ng-template>
+    </li>
+    </ul> 
+</div>
+
+<div>
+    <input [(ngModel)]="newTaskDescription" placeholder="Nouvelle tâche" />
+    <button (click)="addTask()">Ajouter</button>
+</div>
